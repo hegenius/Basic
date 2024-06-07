@@ -52,7 +52,6 @@ public class Quiz {
 //      System.out.println(day[index]);
 //    }
 
-
     while (true) {
       System.out.print("정수를 입력하세요 >> ");
       int input = 0;
