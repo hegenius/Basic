@@ -13,15 +13,15 @@
 
 <div class="container mt-5">
   <ul class="list-group">
-    <li class="list-group-item"><a href="Import.jsp" class="btn btn-link">page 지시어 import</a></li>
-    <li class="list-group-item"><a href="Error500.jsp" class="btn btn-link">기본 예외 발생</a></li>
-    <li class="list-group-item"><a href="ErrorTryCatch.jsp" class="btn btn-link">예외처리 - Try ~ catch</a></li>
-    <li class="list-group-item"><a href="ErrorPage.jsp" class="btn btn-link">page 지시어 errorPage, isErrorPage</a></li>
-    <li class="list-group-item"><a href="TrimWhiteSpace.jsp" class="btn btn-link">page 지시어 trimDirectiveWhitespaces</a></li>
-    <li class="list-group-item"><a href="AutoFlush.jsp" class="btn btn-link">page 지시어 AutoFlush</a></li>
-    <li class="list-group-item"><a href="IncludeMain.jsp" class="btn btn-link">include 지시어</a></li>
-    <li class="list-group-item"><a href="ScriptElements.jsp" class="btn btn-link">jsp script 사용하기</a></li>
-    <li class="list-group-item"><a href="RequestMain.jsp.jsp" class="btn btn-link">내장 객체 - request</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="Import.jsp" class="btn btn-link">page 지시어 import</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="Error500.jsp" class="btn btn-link">기본 예외 발생</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="ErrorTryCatch.jsp" class="btn btn-link">예외처리 - Try ~ catch</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="ErrorPage.jsp" class="btn btn-link">page 지시어 errorPage, isErrorPage</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="TrimWhiteSpace.jsp" class="btn btn-link">page 지시어 trimDirectiveWhitespaces</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="AutoFlush.jsp" class="btn btn-link">page 지시어 AutoFlush</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="IncludeMain.jsp" class="btn btn-link">include 지시어</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="ScriptElements.jsp" class="btn btn-link">jsp script 사용하기</a></li>
+    <li class="list-group-item"><a target="_blank" title="새창열림" rel="noopener noreferrer" href="RequestMain.jsp" class="btn btn-link">내장 객체 - request</a></li>
   </ul>
 </div>
 </body>
