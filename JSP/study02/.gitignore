@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### 추가 내용 ###
+.idea/
+**/src/main/resources/**/bootstrap*
