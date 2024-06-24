@@ -20,14 +20,48 @@
         <h2 class="mb-3">chap 5 데이터베이스</h2>
         <ul class="list-group">
             <li class="list-group-item">
-                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="connectionTest.jsp">DB 접속 테스트</a>
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="connectionTest.jsp" class="btn btn-link">DB 접속 테스트</a>
             </li>
             <li class="list-group-item">
-                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Insert.jsp">insert 사용</a>
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Insert.jsp" class="btn btn-link">insert 사용</a>
             </li>
             <li class="list-group-item">
-                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Select.jsp">select 사용</a>
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Select.jsp" class="btn btn-link">select 사용</a>
             </li>
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Update.jsp" class="btn btn-link">update 사용</a>
+            </li>
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Delete.jsp" class="btn btn-link">delete 사용</a>
+            </li>
+        </ul>
+        <br><hr><br>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Insert02.jsp" class="btn btn-link">PreparedStatement로 insert 사용</a>
+            </li>
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Select02.jsp" class="btn btn-link">PreparedStatement로 select 사용</a>
+            </li>
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Update02.jsp" class="btn btn-link">PreparedStatement로 update 사용</a>
+            </li>
+            <li class="list-group-item">
+                <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/Delete02.jsp" class="btn btn-link">PreparedStatement로 delete 사용</a>
+            </li>
+
+            <br><hr><br>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="chat05/ConnectionTest1.jsp" class="btn btn-link">기존 JSP 방식 DB 접속</a>
+                </li>
+                <li class="list-group-item">
+                    <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chat05/ConnectionTest2.jsp" class="btn btn-link">Java Class를 사용하여 DB 연결</a>
+                </li>
+                <li class="list-group-item">
+                    <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="chat05/ConnectionTest1.jsp" class="btn btn-link">web.xml 을 사용하여 DB 연결</a>
+                </li>
+            </ul>
         </ul>
     </div>
 
