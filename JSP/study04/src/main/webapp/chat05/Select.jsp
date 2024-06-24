@@ -25,7 +25,7 @@
             <div class="col-sm-4">
                 <form action="SelectProcess.jsp" method="get">
                     <div class="my-3">
-                        <label for="search-text" class="form-label">사용자 id</label>
+                        <label for="search-text" class="form-label">사용자 id : </label>
                         <input type="text" class="form-control" id="search-text" name="searchText" placeholder="검색할 사용자의 ID를 입력하세요">
                     </div>
                     <div class="my-3 d-grid gap-2">

@@ -43,11 +43,11 @@
         ResultSet rs = null;
 
         try {
-            String sql = "SELECT id, pass, name, regidate FROM member";  // 매개변수 순서대로 1,2,3,4
+            String sql = "SELECT id, pass, name, regidate FROM member ";  // 매개변수 순서대로 1,2,3,4
             sql += "WHERE id = '" + searchText + "' ";
 
             stmt = conn.createStatement();
-            // executeQuery() : select 문 실행 시 사용하는 명령어, 실행 결과를 ResultRet 타입으로 반환
+            // executeQuery() : select 문 실행 시 사용하는 명령어, 실행 결과를 ResultSet 타입으로 반환
             // executeUpdate() : insert, update, delete 문 실행 시 사용하는 명령어, 실행 결과를 int 타입으로 반환
             rs = stmt.executeQuery(sql);
 
