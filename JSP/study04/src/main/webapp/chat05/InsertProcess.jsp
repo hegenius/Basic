@@ -40,8 +40,8 @@
 
             try {
                 // sql 쿼리문 생성
-                String sql = "insert into member (id, pass, name, regidate)";
-                sql += "values ('" + userId + "', '" + userPw + "', '" + userName + "', now())";
+                String sql = "insert into member (id, pass, name, regidate) ";
+                sql += "values ('" + userId + "', '" + userPw + "', '" + userName + "', now()) ";
 
                 // Connection 클래스 타입의 객체 conn을 통해서 createStatement()를 호출하여 Statement 객체를 생성
                 stmt = conn.createStatement();
