@@ -4,6 +4,7 @@ import jakarta.servlet.ServletContext;
 
 import java.sql.*;
 
+// 데이터베이스 접속을 위한 필드 및 메소드를 선언
 public class JDBConnect {
     private String dbDriver;
     private String dbUrl;
@@ -22,15 +23,15 @@ public class JDBConnect {
            , "test1"
            , "full405");
     }
-    
-    // 
+
+    //  web.xml 에 입력된 내용을 가져와서 사용
     public JDBConnect(ServletContext app) {
-            this (
-                    app.getInitParameter("MySqlDriver"),
-                    app.getInitParameter("MySqlUrl"),
-                    app.getInitParameter("MySqlUser"),
-                    app.getInitParameter("MySqlPass")
-            );
+        this (
+            app.getInitParameter("MySqlDriver"),
+            app.getInitParameter("MySqlUrl"),
+            app.getInitParameter("MySqlUser"),
+            app.getInitParameter("MySqlPass")
+        );
     }
 
     // 사용자가 매개변수로 전달한 정보를 사용
@@ -67,5 +68,4 @@ public class JDBConnect {
             e.printStackTrace();
         }
     }
-
 }

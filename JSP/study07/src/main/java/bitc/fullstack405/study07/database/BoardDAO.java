@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // 데이터베이스의 board 테이블의 정보를 컨트롤하기 위한 클래스
+// 데이터베이스 접속 정보 및 연결 메소드를 JDBConnect 클래스에서 상속받음
 public class BoardDAO extends JDBConnect {
 
     public BoardDAO() {
@@ -23,7 +24,7 @@ public class BoardDAO extends JDBConnect {
 
 
 //    게시판 글 목록 조회 메소드
-    public List<BoardDTO> selectBoardList () {
+    public List<BoardDTO> selectBoardList() {
         List<BoardDTO> boardList = new ArrayList<BoardDTO>();
 
         try {
@@ -72,22 +73,21 @@ public class BoardDAO extends JDBConnect {
                   sql += "FROM board ";
                   sql += "WHERE num = ? ";
 
-                   pstmt = conn.prepareStatement(sql);
-                   pstmt.setInt(1, num);
+           pstmt = conn.prepareStatement(sql);
+           pstmt.setInt(1, num);
 
-                   rs = pstmt.executeQuery();
+           rs = pstmt.executeQuery();
 
-                   if (rs.next()) {
-//                       int num = rs.getInt("num");
-//                       board.setNum(num);
-                       board.setNum(rs.getInt("num"));
-                       board.setTitle(rs.getString("title"));
-                       board.setContent(rs.getString("content"));
-                       board.setId(rs.getString("id"));
-                       board.setPostDate(rs.getString("postdate"));
-                       board.setVisitCount(rs.getInt("visitcount"));
-                   }
-                   
+           if (rs.next()) {
+//             int num = rs.getInt("num");
+//             board.setNum(num);
+               board.setNum(rs.getInt("num"));
+               board.setTitle(rs.getString("title"));
+               board.setContent(rs.getString("content"));
+               board.setId(rs.getString("id"));
+               board.setPostDate(rs.getString("postdate"));
+               board.setVisitCount(rs.getInt("visitcount"));
+           }
         }
         catch (SQLException e) {
             System.out.println("데이터 베이스 조회 중 오류가 발생했습니다.");
@@ -102,13 +102,12 @@ public class BoardDAO extends JDBConnect {
             catch (Exception e) {}
         }
 
-
         return board;
     }
 
 
 //    게시판 글 등록 메소드
-public int insertBoard(BoardDTO board) {
+    public int insertBoard(BoardDTO board) {
         int result = 0;
 
         try {
@@ -135,13 +134,61 @@ public int insertBoard(BoardDTO board) {
         }
 
         return result;
-}
-
+    }
 
 //    게시판 글 수정 메소드
+    public int updateBoard(BoardDTO board) {
+        int result = 0;
+
+        try {
+            String sql = "UPDATE board ";
+            sql += "SET title = ?, content = ?, postdate = now() ";
+            sql += "WHERE num = ? ";
+
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, board.getTitle());
+            pstmt.setString(2, board.getContent());
+            pstmt.setInt(3, board.getNum());
+
+            result = pstmt.executeUpdate();
+        }
+        catch (SQLException e) {
+            System.out.println("데이터베이스 수정 중 오류가 발생했습니다.");
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (pstmt != null) {pstmt.close();}
+                if (conn != null) {conn.close();}
+            }
+            catch (Exception e) {}
+        }
+        return result;
+    }
+
+
 
 //    게시판 글 삭제 메소드
+    public int deleteBoard(int num) {
+        int result = 0;
 
+        try {
+            String sql = "DELETE FROM board WHERE num = " + num + " ";
+            stmt = conn.createStatement();
+            result = stmt.executeUpdate(sql);
+        }
+        catch (SQLException e) {
+            System.out.println("데이터베이스에서 삭제 중 오류가 발생했습니다.");
+            e.printStackTrace();
+        }
+        finally {
+            try{
+                if (stmt != null) {stmt.close();}
+                if (conn != null) {conn.close();}
+            }
+            catch (Exception e) {}
+        }
 
-
+        return result;
+    }
 }
