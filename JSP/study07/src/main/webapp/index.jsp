@@ -41,10 +41,11 @@
     <hr>
     <br>
     <h2>chap08</h2>
-    <li class="list-group-item">
-        <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chap08/List.jsp" class="btn btn-link">게시판</a>
-    </li>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a target="_blank" title="새창열림" rel="noopener noreferrerhref" href="./chap08/List.jsp" class="btn btn-link">회원제 게시판</a>
+        </li>
+    </ul>
 </div>
-
 </body>
 </html>
