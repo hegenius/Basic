@@ -7,18 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
-<%
-    // 외부 파일의 위치를 변수에 저장
-    String outerPath1 = "./inc/OuterPage1";
-    String outerPath2 = "./inc/OuterPage2";
-
-    // page 영역에 데이터 저장
-    pageContext.setAttribute("pAttr", "동명왕");
-    // request 영역에 데이터 저장
-    request.setAttribute("rAttr", "온조왕");
-
-%>
-
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -34,6 +22,19 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+
+<%
+    // 외부 파일의 위치를 변수에 저장
+    String outerPath1 = "./inc/OuterPage1";
+    String outerPath2 = "./inc/OuterPage2";
+
+    // page 영역에 데이터 저장
+    pageContext.setAttribute("pAttr", "동명왕");
+    // request 영역에 데이터 저장
+    request.setAttribute("rAttr", "온조왕");
+%>
+
+
 <div class="container mt-5">
     <h2 class="text-center">지시어와 액션 태그 동작 방식 비교</h2>
 
@@ -41,7 +42,7 @@
 <%--    include 지시어로 외부 파일 불러오기 --%>
     <%@ include file="./inc/OuterPage1.jsp"%>
 <%--    지시어에는 표현식을 사용할 수 없음 --%>
-<%--    <%@ include file="<%=outerPath1%>" %> --%>
+<%--    <%@ include file="<%=outerPath1%>" %>--%>
 <%--    include 지시어는 외부파일의 내용을 모두 복사하여 현재 파일에 포함시키기 때문에 외부 파일이 현재 파일과 하나의 파일이 된 것 --%>
     <p>외부 파일에 선언한 변수 : <%=newVar1%></p>
 
@@ -51,7 +52,7 @@
 <%--    액션 태그에서는 표현식 사용이 가능 --%>
     <jsp:include page="<%=outerPath2%>"></jsp:include>
 <%--    액션 태그의 include는 외부 파일로 이동하여 실행하고 결과만 가져오는 방식이기 때문에 실제로 페이지 변경이 발생하는 부분이기 때문에 외부 파일에서 선언한 변수를 사용할 수 없음 --%>
-<%--    <p>외부 파일에 선언한 변수 : <%=newVar2%></p>--%>
+    <p>외부 파일에 선언한 변수 : <%--=newVar2--%></p>
 </div>
 </body>
 </html>
