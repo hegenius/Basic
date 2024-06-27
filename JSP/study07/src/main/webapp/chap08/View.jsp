@@ -8,21 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
 <%-- 상세 글 보기 페이지 --%>
-<%-- 1. 필요한 클래스 import --%>
-<%-- 2. DAO 객체 생성 --%>
-<%-- 3. 파라미터로 전달받은 데이터 가져오기 --%>
-<%-- 4. DAO 에서 제공하는 메소드로 데이터 조회 --%>
-<%-- 5. 가져온 데이터를 UI에 출력 --%>
+<%-- 1. 필요한 클래스 import--%>
+<%-- 2. DAO 객체 생성--%>
+<%-- 3. 파라미터로 전달받은 데이터 가져오기--%>
+<%-- 4. DAO 에서 제공하는 메소드로 데이터 조회--%>
+<%-- 5. 가져온 데이터를 UI에 출력--%>
 
 <%@ page import="bitc.fullstack405.study07.database.BoardDAO" %>
 <%@ page import="bitc.fullstack405.study07.database.BoardDTO" %>
 
 <%
+    // 클라이언트에서 전달받은 지정한 게시물 번호를 가져옴
     int num = Integer.parseInt(request.getParameter("num"));
 
+//    DAO 타입의 객체 생성 및 DB 연결
     BoardDAO dao = new BoardDAO();
     dao.dbOpen();
 
+//  DAO를 사용하여 지정한 게시물 번호의 정보를 가져옴
     BoardDTO board = dao.selectBoardDetail(num);
 
     dao.dbClose();
@@ -44,20 +47,38 @@
             crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
+        // $(document).ready : jquery 에서 제공하는 html 태그가 모두 로드되고 난 후 아래의 자바스크립트를 실행하는 이벤트
+        // document.addEventListener("DOMContentLoaded") : 순수 자바스크립트에서 제공하는 html 태그가 모두 로드되고 난 후 아래의 자바스크립트를 실행하는 이벤트
         $(document).ready(function (){
+            // on("이벤트종류", 실행할 함수) : jquery에서 제공하는 이벤트 등록 함수
+            // off("이벤트종류") : jquery에서 제공하는 이벤트 삭제 함수
+            // addEventListener("이벤트종류", 실행할 함수) : 순수 자바스크립트에서 제공하는 이벤트 등록 함수
+            // removeEventListener("이벤트종류") : 순수 자바스크립트에서 제공하는 이벤트 삭제 함수
             $('#btn-list').on("click", function(){
+                // 자바스크립트에서 제공하는 페이지 이동 명령, html의 a 태그와 같음 (리다이렉트)
                 location.href = "List.jsp";
             });
+
+            // 수정 버튼 클릭
             $('#btn-edit').on("click", function(){
+                // val() : jquery에서 제공하는 input 태그의 value 속성값을 설정하거나 가져오는 함수
+                // $("#num") : jquery를 사용하여 id 값이 'num'인 html 태그를 선택
                 var num = $("#num").val();
+                // 이동할 페이지에 쿼리스트링까지 추가하여 지정한 페이지로 이동
                 location.href = "Edit.jsp?num=" + num;
             });
+
+            // 삭제 버튼 클릭
             $('#btn-delete').on("click", function(){
+                // confirm() : 자바스크립트에서 제공하는 알림창, 사용자의 선택에 따라 true/false 값을 입력 받음
                 var confirmed = confirm("삭제하시겠습니까?");
 
                 if (confirmed == true) {
+                    // $("#frm")[0] : jquery를 사용하여 id 속성값이 'frm'인 form 태그를 선택
                     var frm = $("#frm")[0];
-                    frm.action = "Delete.jsp";
+                    // action : jquery를 사용하여 선택한 form 태그의 action 속성값을 변경
+                    // submit() : form 태그의 submit 이벤트를 실행
+                    frm.action = "DeleteProcess.jsp";
                     frm.submit();
                 }
             });
@@ -67,34 +88,8 @@
 </head>
 <body>
 
-<header class="px-sm-5 text-center" style="margin-top:100px">
-    <div class="container">
-        <div class="rounded-3 bg-secondary bg-opacity-25 px-4 py-5">
-            <h1 class="display-4">회원제 게시판 상세보기 페이지</h1>
-        </div>
-    </div>
-</header>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <div class="container-fluid">
-        <a href="List.jsp" class="navbar-brand">게시판</a>
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a href="#" class="nav-link">메뉴 1</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">메뉴 2</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">메뉴 3</a>
-            </li>
-        </ul>
-
-        <div class="ms-auto">
-            <a href="#" class="btn btn-outline-success">로그인</a>
-        </div>
-    </div>
-</nav>
+<%@ include file="layout/Header.jsp" %>
+<%@ include file="layout/Menu.jsp" %>
 
 <main class="container mt-5">
     <section>
@@ -143,22 +138,20 @@
                     </div>
                 </div>
             </div>
+            <div class="row my-3">
+                <div class="col-sm">
+                    <button type="button" class="btn btn-outline-secondary" id="btn-list">목록</button>
+                </div>
+                <div class="col-sm d-flex justify-content-end">
+                    <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
+                    <button type="button" class="btn btn-warning ms-2" id="btn-edit">수정</button>
+                </div>
+            </div>
         </form>
-        <div class="row my-3">
-            <div class="col-sm">
-                <button type="button" class="btn btn-outline-secondary" id="btn-list">목록</button>
-            </div>
-            <div class="col-sm d-flex justify-content-end">
-                <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
-                <button type="button" class="btn btn-warning ms-2" id="btn-edit">수정</button>
-            </div>
-        </div>
     </section>
 </main>
 
-<footer class="border-top mt-sm-5 p-sm-5">
-    <p class="lead text-muted text-center">made by fullstack405</p>
-</footer>
+<jsp:include page="layout/Footer.jsp"></jsp:include>
 
 </body>
 </html>
