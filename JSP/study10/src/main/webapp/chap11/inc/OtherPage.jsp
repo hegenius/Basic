@@ -23,8 +23,11 @@
 <div class="container mt-5">
     <h4>OtherPage.jsp</h4>
     <ul class="list-group">
-<%--        jstl의 impoprt는 액션태그의 <jsp:include>와 같은 기능을 하므로 import 한 페이지로 이동후 출력한 결과만 가져와서 화면에 출력 --%>
-        <li class="list-group-item">저장된 값 : ${ requestScope.requestVar }</li>
+<%--    jstl의 impoprt는 액션태그의 <jsp:include>와 같은 기능을 하므로 import 한 페이지로 이동후 출력한 결과만 가져와서 화면에 출력 --%>
+<%--    import를 하는 페이지의 page 영역에 저장한 데이터를 import가 된 페이지에서 사용할 수 없음 --%>
+        <li class="list-group-item">page에 저장된 값 : ${pageScope.pageVar}</li>
+        <%--  request 영역의 데이터는 forward 된 페이지의 데이터까지만 저장하고 있음 --%>
+        <li class="list-group-item">request에 저장된 값 : ${requestScope.requestVar}</li>
         <li class="list-group-item">매개변수 1 : ${ param.user_param1 }</li>
         <li class="list-group-item">매개변수 2 : ${ param.user_param2 }</li>
     </ul>

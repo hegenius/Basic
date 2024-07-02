@@ -25,10 +25,16 @@
 <div class="container mt-5">
     <h4>url 태그로 링크 걸기</h4>
     <c:url value="./inc/OtherPage.jsp" var="url">
-        <c:param name="user_param1" value="Must" />
-        <c:param name="user_param2">Have</c:param>
+        <c:param name="user_param1" value="첫번째 파라미터" />
+        <c:param name="user_param2">두번째 파라미터</c:param>
     </c:url>
-    <a href="${url }">OtherPage.jsp 바로가기</a>
+
+    <%
+        String url2 = "./inc/OtherPage.jsp?user_param1=11111&user_param2=22222";
+    %>
+
+    <a href="${url}" target="_blank" class="btn btn-link">OtherPage.jsp 바로 가기</a>
+    <a href="<%=url2%>" target="_blank" class="btn btn-link">OtherPage.jsp 바로 가기2</a>
 </div>
 </body>
 </html>

@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%-- jstl 사용을 위해서 추가 --%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
 <!DOCTYPE html>
@@ -22,25 +23,25 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container mt-5">
 <%--        page 영역에 데이터 저장--%>
         <c:set var="pageVar" value="page 영역에 저장" scope="page" />
 <%--        request 영역에 데이터 저장--%>
-        <c:set var="requestVar" value="MustHave" scope="request" />
+        <c:set var="requestVar" value="request 영역에 저장" scope="request"></c:set>
+    <%-- import 사용 선언, 지정한 변수에 import로 가져올 URL을 저장, import 선언만하고 출력 안함 --%>
+    <%-- jstl의 import 는 액션 태그의 <jsp:include>와 같은 기능 --%>
         <c:import url="./inc/OtherPage.jsp" var="contents">
-            <c:param name="user_param1" value="JSP" />
-            <c:param name="user_param2" value="기본서" />
+            <c:param name="user_param1" value="JSP"></c:param>
+            <c:param name="user_param2" value="기본서"></c:param>
         </c:import>
 
-        <br><br>
+    <div class="container mt-5">
         <h4>다른 문서 삽입하기</h4>
-<%--    import 한 문서의 내용을 출력할 위치 지정 --%>
 <%--    EL 언어로 변수의 내용을 출력 시 import 한 문서의 내용을 출력 --%>
         ${ contents }
 
-        <br><br>
+        <br><hr><br>
         <h4>외부 자원 삽입하기</h4>
-        <iframe src="inc/GoldPage.jsp" style="width:100%; height: 600px;"></iframe>
+        <iframe src="inc/GoldPage.jsp" style="height: 600px;" class="w-100"></iframe>
         <br><br><br><br><br><br>
     </div>
 </body>
