@@ -26,12 +26,15 @@
     <%
         String[] rgba = {"Red", "Green", "Blue", "Black"};
     %>
+
     <h4>향상된 for문 형태의 forEach 태그</h4>
 <%--   items 속성에 <%=%> 형태의 표현식을 사용한 이유는 ${} 형태의 EL언어는 스크립틀릿에서 저장한 변수를 읽을 수 없음 --%>
     <c:forEach items="<%= rgba %>" var="c">
-        <span style="color:${ c };">${ c }</span>
+        <span class="me-3" style="color:${ c };">${ c }</span>
     </c:forEach>
-    <br><br>
+
+    <br><hr><br>
+
     <h4>varStatus 속성 살펴보기</h4>
     <table class="table table-bordered table-hover table-striped">
         <tbody>
@@ -40,12 +43,12 @@
                 <td>count : ${ loop.count }</td>
                 <td>index : ${ loop.index }</td> <%-- 초기값 설정 --%>
                 <td>current : ${ loop.current }</td> <%-- 초기값 설정 --%>
+                <td>c : ${c}</td>
                 <td>first : ${ loop.first }</td>
                 <td>last : ${ loop.last }</td>
             </tr>
         </c:forEach>
         </tbody>
-
     </table>
 </div>
 

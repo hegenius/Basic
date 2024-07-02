@@ -24,34 +24,67 @@
 <body>
 <div class="container mt-5">
     <h4>일반 for문 형태의 forEach 태그</h4>
-    <c:forEach begin="0" end="10" step="1" var="i">
-        <span class="me-4">i의 값 : ${ i }입니다.</span>
-    </c:forEach>
+    <div>
+        <p>
+            <%--      JSTL의 forEach 로 반복문 사용 --%>
+            <c:forEach begin="0" end="10" step="1" var="i">
+                <span class="me-4">i의 값 : ${i}</span>
+            </c:forEach>
+        </p>
 
-    <br><br>
+        <br>
+
+        <p>
+            <%
+                for (int i = 0; i <= 10; i++) {
+                    out.print("<span class='me-4'>i의 값 : " + i + "</span>");
+                }
+            %>
+        </p>
+
+        <br>
+
+        <p>
+            <%
+                for (int i = 0; i <= 10; i++) {
+            %>
+            <span class="me-4">i의 값 : <%=i%></span>
+            <%
+                }
+            %>
+        </p>
+    </div>
+
+    <br><hr><br>
 
     <h4>varStatus 속성 살펴보기</h4>
     <table class="table table-bordered table-hover table-striped">
+        <tbody>
 <%--        varStatus로 forEach의 상태 확인 --%>
         <c:forEach begin="3" end="5" var="i" varStatus="loop">
             <tr>
                 <td>count : ${ loop.count }</td>
                 <td>index : ${ loop.index }</td> <%-- 초기값 설정 --%>
                 <td>current : ${ loop.current }</td> <%-- 초기값 설정 --%>
+                <td>i : ${i}</td>
                 <td>first : ${ loop.first }</td>
                 <td>last : ${ loop.last }</td>
             </tr>
         </c:forEach>
+        </tbody>
     </table>
-    <br>
-    <h4>1에서 100까지 정수 중 홀수의 합</h4>
-    <c:forEach begin="1" end="100" var="j">
-        <c:if test="${ j mod 2 ne 0}">
-            <c:set var="sum" value="${ sum + j }" />
-        </c:if>
-    </c:forEach>
-    <p>1 ~ 100 사이의 정수 중 홀수의 합은? ${ sum }</p>
 
+    <br><hr><br>
+
+    <h4>1에서 100까지 정수 중 홀수의 합</h4>
+    <div>
+        <c:forEach begin="1" end="100" var="j">
+            <c:if test="${ j mod 2 ne 0}">
+                <c:set var="sum" value="${ sum + j }" />
+            </c:if>
+        </c:forEach>
+        <p>1 ~ 100 사이의 정수 중 홀수의 합은? ${ sum }</p>
+    </div>
 </div>
 </body>
 </html>

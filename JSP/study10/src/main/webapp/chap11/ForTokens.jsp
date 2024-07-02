@@ -27,11 +27,11 @@
         // 스클립틀릿으로 변수 선언
         String rgb1 = "Red,Green,Blue,Black";
     %>
+    <%--  JSTL의 set을 사용하여 page 영역에 변수 선언 --%>
     <c:set var="rgb2" value="Red,Green,Blue,Black"></c:set>
 
     <h3>forTokens 사용하기</h3>
     <div>
-<%--        forTokens는 java에서 split + for문이 합쳐진 형태 --%>
 <%--        스크립틀릿으로 선언한 변수를 표현식으로 사용 --%>
         <c:forTokens items="<%= rgb1 %>" delims="," var="color1">
             <span class="me-4" style="color:${ color1 };">${ color1 }</span> <br/>
@@ -44,6 +44,16 @@
             <span class="me-4" style="color:${ color2 };">${ color2 }</span> <br/>
         </c:forTokens>
     </div>
+    <br>
+    <%--    forTokens 는 java에서 split + for 문이 합쳐진 형태 --%>
+    <%
+        String rgb = "red,green,blue,black";
+        String[] rgb3 = rgb.split(",");
+
+        for (int i = 0; i < rgb3.length; i++) {
+            out.print("<span class='me-4' style='color: " + rgb3[i] + ";'>" + rgb3[i] + "</span>");
+        }
+    %>
 </div>
 </body>
 </html>

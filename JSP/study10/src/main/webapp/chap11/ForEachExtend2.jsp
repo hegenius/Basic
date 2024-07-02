@@ -8,12 +8,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
+<%-- jstl의 core를 사용하기 위해서 추가 --%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<%@ page import="java.util.LinkedList" %>
+<%-- 컬렉션을 사용하기 위해서 추가 --%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 
+<%-- 자바 빈즈로 선언한 Person 클래스 추가 --%>
 <%@ page import="bitc.fullstack405.study10.Person" %>
 
 
@@ -35,35 +39,47 @@
     <h4>List 컬렉션 사용하기</h4>
     <%
         // 스크립틀릿의 변수로 선언, page 영역에 저장한 것이 아님
-        LinkedList<Person> lists = new LinkedList<Person>();
+        List<Person> lists = new ArrayList<>();
         lists.add(new Person("이민석", 22));
         lists.add(new Person("윤동희", 23));
         lists.add(new Person("정보근", 24));
     %>
-    <c:set var="lists" value="<%= lists %>"/>
-    <c:forEach items="${ lists }" var="list">
-        <li>
-            이름 : ${ list.name }, 나이 : ${ list.age }
-        </li>
-    </c:forEach>
 
-    <br><br>
+    <div>
+<%--    스크립틀릿의 변수로 선언된 List 타입의 변수 lists를 사용하기 때문에 표현식으로 출력 --%>
+        <c:set var="lists" value="<%= lists %>"/>
+        <ul class="list-group">
+            <c:forEach items="${ lists }" var="item">
+                <li class="list-group-item">
+                    이름 : ${ item.name }, 나이 : ${ item.age }
+                </li>
+            </c:forEach>
+        </ul>
+    </div>
+
+    <br><hr><br>
 
     <h4>Map 컬렉션 사용하기</h4>
     <%
-        Map<String,Person> maps = new HashMap<String,Person>();
+        // 스크립틀릿의 변수로 선언
+        Map<String,Person> maps = new HashMap<>();
         maps.put("1st", new Person("이민석", 22));
         maps.put("2nd", new Person("윤동희", 23));
         maps.put("3rd", new Person("정보근", 24));
     %>
-    <c:set var="maps" value="<%= maps %>" />
-    <c:forEach items="${ maps }" var="map">
-<%--        map 방식이기 때문에 item.key 입력 시 key 값이 출력, item.value 입력 시 value 값이 출력 --%>
-<%--        item.value로 출력된 값이 Person 클래스 타입의 객체이기 때문에 해당 객체의 필드값을 출력하기 위해서 item.value.name, item.value.age를 사용함 --%>
-        <li>key => ${ map.key } <br/>
-            value => 이름 : ${ map.value.name }, 나이 : ${ map.value.age }
-        </li>
-    </c:forEach>
+    <div>
+<%--    스크립틀릿의 변수로 선언된 Map 타입의 변수 maps를 사용하기 때문에 표현식으로 출력 --%>
+        <c:set var="maps" value="<%= maps %>" />
+        <ul class="list-group">
+            <c:forEach items="${ maps }" var="item">
+<%--        map 방식이기 때문에 item.key 입력 시 key 값이 출력, item.value 입력 시 value 값이 출력--%>
+<%--        item.value로 출력된 값이 Person 클래스 타입의 객체이기 때문에 해당 객체의 필드값을 출력하기 위해서 item.value.name, item.value.age 를 사용함 --%>
+            <li class="list-group-item">key => ${ item.key } <br/>
+                value => 이름 : ${ item.value.name }, 나이 : ${ item.value.age }
+            </li>
+            </c:forEach>
+        </ul>
+    </div>
 </div>
 </body>
 </html>
