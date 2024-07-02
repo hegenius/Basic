@@ -47,7 +47,10 @@
 <%--    JSTL remove를 사용하여 지정한 영역의 변수 삭제 --%>
     <c:remove var="scopeVar" scope="session" />
     <ul class="list-group">
+        <li class="list-group-item">scopeVar : ${ scopeVar }</li>
+        <li class="list-group-item">requestScope.scopeVar : ${ requestScope.scopeVar }</li>
         <li class="list-group-item">sessionScope.scopeVar : ${ sessionScope.scopeVar }</li>
+        <li class="list-group-item">applicationScope.scopeVar : ${ applicationScope.scopeVar }</li>
     </ul>
 
     <br>
@@ -57,6 +60,7 @@
     <ul class="list-group">
         <li class="list-group-item">scopeVar : ${ scopeVar }</li>
         <li class="list-group-item">requestScope.scopeVar : ${ requestScope.scopeVar }</li>
+        <li class="list-group-item">sessionScope.scopeVar : ${ sessionScope.scopeVar }</li>
         <li class="list-group-item">applicationScope.scopeVar : ${ applicationScope.scopeVar }</li>
     </ul>
 </div>
