@@ -27,18 +27,18 @@
     <c:set var="iTag">
         i 태그는 <i>기울임</i>을 표현합니다.
     </c:set>
-    <br><br>
+    <br><hr><br>
 
     <h4>기본 사용</h4>
 <%--    escapeXml 속성값이 기본으로 true 이기 때문에 특수기호를 모두 문자열로 출력 --%>
     <c:out value="${ iTag }" />
-    <br><br>
+    <br><hr><br>
 
     <h4>escapeXml 속성</h4>
 <%--    escapeXml 속성값이 false 이면 특수기호의 기능을 사용함 --%>
     <c:out value="${ iTag }" escapeXml="false" />
 
-    <br><br>
+    <br><hr><br>
     <h4>default 속성</h4>
 <%--    value 속성에 값이 없을 경우 default 속성의 값을 대신 사용 --%>
 <%--    현재 페이지를 서버에 요청 시 name  이라는 파라미터를 제공하지 않음, param.name은 null임 --%>

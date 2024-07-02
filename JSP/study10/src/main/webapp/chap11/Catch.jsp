@@ -23,26 +23,44 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h4>자바 코드에서의 예외</h4>
     <%
         int num1 = 100;
     %>
-    <c:catch var="eMessage">
+
+    <h4>스크립틀릿에서의 예외</h4>
+    <c:catch var="errMsg">
         <%
+            // 0으로 나누어서 오류 발생
             int result = num1 / 0;
         %>
     </c:catch>
-    <p>예외 내용 : ${ eMessage }</p>
-    <br>
+    <p>예외 내용 : ${errMsg}</p>
+
+    <hr>
+
     <h4>EL에서의 예외</h4>
+    <%--  JSTL의 set을 사용하여 변수 선언 --%>
+    <c:set var="num2" value="200"></c:set>
 
-    <c:set var="num2" value="200" />
-
-    <c:catch var="eMessage">
-<%--    문자열과 숫자 연산 못함 --%>
-        ${"일" + num2 }
+    <c:catch var="errMsg">
+        <%--    EL언어에서는 문자열 연결 연산자가 없음, 문자열과 숫자를 연산할 수 없음 --%>
+        ${"일" + num2}
     </c:catch>
-    <p>예외 내용 : ${ eMessage }</p>
+    <p>예외 내용 : ${errMsg}</p>
+
+    <hr>
+
+    <h4>java 코드에서의 사용</h4>
+    <%
+        int result2 = 0;
+
+        try {
+            result2 = num1 / 0;
+        }
+        catch (Exception e) {
+            out.print("<p>예외 내용 : " + e.getMessage() + "</p>");
+        }
+    %>
 </div>
 </body>
 </html>
