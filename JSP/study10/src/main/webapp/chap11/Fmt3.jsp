@@ -25,22 +25,28 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h4>로케일 설정</h4>
     <c:set var="today" value="<%= new java.util.Date() %>" />
 
-    <p>한글로 설정 : <fmt:setLocale value="ko_kr" /> <br>
-    <fmt:formatNumber value="10000" type="currency" /> <br>
-    <fmt:formatDate value="${ today }" />
-    </p>
-
-    <p>일어로 설정 : <fmt:setLocale value="ja_JP" /><br>
-    <fmt:formatNumber value="10000" type="currency" /><br>
-    <fmt:formatDate value="${ today }" />
-    </p>
-    <p>영어로 설정 : <fmt:setLocale value="en_US" /><br>
-    <fmt:formatNumber value="10000" type="currency" /><br>
-    <fmt:formatDate value="${ today }" />
-    </p>
+<%--  언어 설정 값 참조 사이트 --%>
+<%--  http://www.lingoes.net/en/translator/langcode.htm --%>
+    <h4>로케일 설정</h4>
+    <br>
+    <div>
+        <h5>한글로 설정</h5>
+        <fmt:setLocale value="ko_kr"></fmt:setLocale>
+        <p><fmt:formatNumber value="10000" type="currency" /> </p>
+        <p><fmt:formatDate value="${ today }" /></p>
+        <br><hr><br>
+        <h5>일어로 설정</h5>
+        <fmt:setLocale value="ja_JP" ></fmt:setLocale>
+        <p><fmt:formatNumber value="10000" type="currency" /></p>
+        <p><fmt:formatDate value="${ today }" /></p>
+        <br><hr><br>
+        <h5>영어로 설정</h5>
+        <fmt:setLocale value="en_US" ></fmt:setLocale>
+        <p><fmt:formatNumber value="10000" type="currency" /></p>
+        <p><fmt:formatDate value="${ today }" /></p>
+    </div>
 </div>
 </body>
 </html>
