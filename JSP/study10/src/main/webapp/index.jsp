@@ -19,53 +19,52 @@
 
 
 <div class="container mt-5">
-    <h2>chap11</h2>
-
+    <h3>chap11</h3>
     <ul class="list-group">
         <li class="list-group-item">
-            <a href="./chap11/Remove.jsp" target="_blank" class="btn btn-link">JSTL core - Remove</a>
+            <a href="chap11/Remove.jsp" target="_blank" class="btn btn-link">jstl core - remove</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/If.jsp" target="_blank" class="btn btn-link">JSTL core - If</a>
+            <a href="chap11/If.jsp" target="_blank" class="btn btn-link">jstl core - if</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Choose.jsp" target="_blank" class="btn btn-link">JSTL core - Choose</a>
+            <a href="chap11/Choose.jsp" target="_blank" class="btn btn-link">jstl core - Choose</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/ForEachNormal.jsp" target="_blank" class="btn btn-link">JSTL core - 일반for 문</a>
+            <a href="chap11/ForEachNormal.jsp" target="_blank" class="btn btn-link">jstl core - ForEach_기본</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/ForEachExtend1.jsp" target="_blank" class="btn btn-link">JSTL core - 향상된 for 문</a>
+            <a href="chap11/ForEachExtend1.jsp" target="_blank" class="btn btn-link">jstl core - ForEach_향상된 For1</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/ForEachExtend2.jsp" target="_blank" class="btn btn-link">JSTL core - 향상된 for 문2</a>
+            <a href="chap11/ForEachExtend2.jsp" target="_blank" class="btn btn-link">jstl core - ForEach_향상된 For2</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/ForTokens.jsp" target="_blank" class="btn btn-link">JSTL core - forTkedns</a>
+            <a href="chap11/ForTokens.jsp" target="_blank" class="btn btn-link">jstl core - ForTokens</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Import.jsp" target="_blank" class="btn btn-link">JSTL core - Import</a>
+            <a href="chap11/Import.jsp" target="_blank" class="btn btn-link">jstl core - import</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Redirect.jsp" target="_blank" class="btn btn-link">JSTL core - Redirect</a>
+            <a href="chap11/Redirect.jsp" target="_blank" class="btn btn-link">jstl core - redirect</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Url.jsp" target="_blank" class="btn btn-link">JSTL core - Url</a>
+            <a href="chap11/Url.jsp" target="_blank" class="btn btn-link">jstl core - url</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Out.jsp" target="_blank" class="btn btn-link">JSTL core - Out</a>
+            <a href="chap11/Out.jsp" target="_blank" class="btn btn-link">jstl core - out</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Catch.jsp" target="_blank" class="btn btn-link">JSTL core - Catch</a>
+            <a href="chap11/Catch.jsp" target="_blank" class="btn btn-link">jstl core - catch</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Fmt1.jsp" target="_blank" class="btn btn-link">JSTL core - Fmt1</a>
+            <a href="chap11/Fmt1.jsp" target="_blank" class="btn btn-link">jstl formatting - formatNumber / parseNumber</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Fmt2.jsp" target="_blank" class="btn btn-link">JSTL core - Fmt2 </a>
+            <a href="chap11/Fmt2.jsp" target="_blank" class="btn btn-link">jstl formatting - formatDate / timeZone</a>
         </li>
         <li class="list-group-item">
-            <a href="./chap11/Fmt3.jsp" target="_blank" class="btn btn-link">JSTL core - Fmt3 </a>
+            <a href="chap11/Fmt3.jsp" target="_blank" class="btn btn-link">jstl formatting - locale</a>
         </li>
     </ul>
 </div>
