@@ -4,8 +4,7 @@ import bitc.fullstack405.board1.dto.BoardDTO;
 import bitc.fullstack405.board1.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -53,4 +52,75 @@ public class BoardController {
 //    클라이언트에게 View 템플릿 파일과 데이터를 함께 전달
     return mv;
   }
+
+//  글쓰기 페이지
+  @RequestMapping("/board/boardWrite.do")
+  public String boardWrite() throws Exception {
+    return "board/boardWrite";
+  }
+
+//  글쓰기 처리, 데이터베이스 등록을 위한 내부 처리
+//  매개변수로 BoardDTO 클래스 타입의 객체를 받음
+//  DTO 타입으로 클라이언트에서 데이터를 받아올 경우 클라이언트의 input 태그 name 속성값이 DTO 클래스의 필드명과 동일해야 함
+  @RequestMapping("/board/insertBoard.do")
+  public String insertBoard(BoardDTO board) throws Exception {
+//    서비스 객체에서 제공하는 insertBoard() 메소드 추출
+    boardService.insertBoard(board);
+
+//    JSP의 response.sendRedirect() 와 같은 역할
+    return "redirect:/board/boardList.do";
+  }
+
+//  글 상세보기
+//  @RequestParam : 클라이언트에서 전달한 데이터의 변수명을 알려주는 어노테이션, 데이터 전달 기능
+//  JSP에서 request.getParameter() 메소드와 같은 기능
+//  @RequestParam("name 속성명") 형태로 사용 시 클라이언트에서 설정한 name 속성값을 지정할 수 있음
+  @RequestMapping("/board/boardDetail.do")
+  public ModelAndView boardDetail(@RequestParam int boardIdx) throws Exception {
+    ModelAndView mv = new ModelAndView("board/boardDetail");
+
+//    서비스를 통해서 지정한 글 내용 가져오기
+    BoardDTO board = boardService.selectBoardDetail(boardIdx);
+//    가져온 데이터를 ModelAndView 클래스 타입의 객체에 저장
+    mv.addObject("board", board);
+
+    return mv;
+  }
+
+// 글 수정
+  @RequestMapping("/board/updateBoard.do")
+  public String updateBoard(BoardDTO board) throws Exception {
+    boardService.updateBoard(board);
+
+    return "redirect:/board/boardList.do";
+  }
+
+//  글 삭제
+  @RequestMapping("/board/deleteBoard.do")
+  public String deleteBoard(@RequestParam("boardIdx") int idx) throws Exception {
+    boardService.deleteBoard(idx);
+
+    return "redirect:/board/boardList.do";
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

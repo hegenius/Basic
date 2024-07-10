@@ -55,7 +55,7 @@
         FROM
             t_board
         WHERE
-            board_idx = 1
+            board_idx = #{board_idx}
         AND
             deleted_yn = 'N'
     </select>
@@ -65,7 +65,7 @@
         UPDATE
             t_board
         SET
-            title = #{title}, contents = #{contents}, update_user = #{items}, update_date = now()
+            title = #{title}, contents = #{contents}, update_user = #{updateUser}, update_date = now()
         WHERE
             board_idx = #{board_idx}
     </update>

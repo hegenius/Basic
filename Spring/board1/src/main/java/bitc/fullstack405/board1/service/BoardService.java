@@ -9,4 +9,12 @@ import java.util.List;
 public interface BoardService {
 
   public List<BoardDTO> selectBoardList() throws Exception;
+
+  public void insertBoard(BoardDTO board) throws Exception;
+
+  BoardDTO selectBoardDetail(int boardIdx) throws Exception;
+
+  void updateBoard(BoardDTO board) throws Exception;
+
+  void deleteBoard(int boardIdx) throws Exception;
 }

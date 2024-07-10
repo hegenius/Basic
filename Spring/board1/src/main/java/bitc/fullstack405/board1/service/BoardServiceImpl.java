@@ -23,4 +23,25 @@ public class BoardServiceImpl implements BoardService {
 //    BoardMapper 에서 제공하는 selectBoardList() 메소드를 사용하여 데이터를 가져옴
     return boardMapper.selectBoardList();
   }
+
+  @Override
+  public void insertBoard(BoardDTO board) throws Exception {
+//    데이터베이스에 데이터 추가를 위하여 mapper 에서 제공하는 insertBoard()
+    boardMapper.insertBoard(board);
+  }
+
+  @Override
+  public BoardDTO selectBoardDetail(int boardIdx) throws Exception {
+    return boardMapper.selectBoardDetail(boardIdx);
+  }
+
+  @Override
+  public void updateBoard(BoardDTO board) throws Exception {
+    boardMapper.updateBoard(board);
+  }
+
+  @Override
+  public void deleteBoard(int boardIdx) throws Exception {
+    boardMapper.deleteBoard(boardIdx);
+  }
 }
