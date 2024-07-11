@@ -24,6 +24,7 @@
 <!--   jsp를 사용하고자 할 경우 추가적인 설정이 필요함 -->
 
 <!--   gradle 설정에서 종속성을 추가해야 thymeleaf를 사용할 수 있음 -->
+<!--   implementation 'org.springframework.boot:spring-boot-starter-thymeleaf' -->
 
 <!--   application.properties 에 설정을 추가하여 사용할 수 있음 -->
 <!--   미설정 시 기본 설정값으로 동작함 -->
@@ -31,7 +32,6 @@
 <!--   spring.thymeleaf.suffix=html : view 파일의 기본 확장자 설정 -->
 <!--   spring.thymeleaf.enabled=true : thymeleaf 사용 설정 -->
 <!--   spring.thymeleaf.cache=false : cache 사용, 사용 시 컴파일한 파일만 사용함, 개발 시에는 미사용 -->
-
 
 <!--   html 태그에 xmlns:th 속성을 추가하여 해당 html 에서 thymeleaf 를 사용한다는 것을 알려줌 -->
 
@@ -49,13 +49,12 @@
    <br><hr><br>
 
    <h3>text 출력, th:text</h3>
-   thymeleaf에서 텍스트를 출력하기 위한 명령어
-   서버에서 전달된 데이터를 html 태그에 출력하기 위해서 사용
-   html 태그의 시작 태그와 끝 태그 사이에 데이터를 출력
-   messages.properties 파일에 문자열 세트를 미리 생성해 놓고 호출하여 사용할 수 있음 (리소스 번들)
-   메세지 리소스 번들 사용 시 #{} 형식을 사용해야 함
-   메세지 리소스 번들은 다국어 설정이 지원됨
-
+<!--    thymeleaf에서 텍스트를 출력하기 위한 명령어 -->
+<!--    서버에서 전달된 데이터를 html 태그에 출력하기 위해서 사용 -->
+<!--    html 태그의 시작 태그와 끝 태그 사이에 데이터를 출력 -->
+<!--    messages.properties 파일에 문자열 세트를 미리 생성해 놓고 호출하여 사용할 수 있음 -->
+<!--    메세지 리소스 번들 사용 시 #{} 형식을 사용해야 함 -->
+<!--    메세지 리소스 번들은 다국어 설정이 지원됨 -->
    <p>html에 직접 입력한 문자열</p>
    <p th:text="${value01}">기본 문자열</p>
    <p th:text="#{hello}">기본 문자열</p>
@@ -63,27 +62,30 @@
    <p th:text="#{class}"></p>
 
    <br><hr><br>
+
    <h3>문자열과 html 태그 출력, th:utext</h3>
-   th:utext는 th:text와 기본적으로 동일한 기능을 제공
-   th:utext는 html 태그 사용이 가능함
+<!--   th:utext는 th:text와 기본적으로 동일한 기능을 제공-->
+<!--   th:utext는 html 태그 사용이 가능함-->
     <p>html에 직접 문자열 출력</p>
     <p>html에 직접 <strong>문자열</strong> 출력</p>
    <p th:text="${utext}">서버에서 전달된 데이터로 변환될 문자열</p>
    <p th:utext="${utext}">서버에서 전달된 데이터로 변환될 문자열</p>
 
    <br><hr><br>
-   <h3>thymeleaf 로 링크 주소 표시</h3>
-   thymeleaf에서 url 를 표시할 경우 @{url} 형태로 사용
-   웹디자이너와 협업 시 디자이너가 임시로 입력해 놓은 url과 개발자가 사용할 url을 함께 표기하여 협업이 가능함
-   모든 URL에 대하여 @{url} 형식으로 사용이 가능함
 
+   <h3>thymeleaf 로 링크 주소 표시</h3>
+<!--   thymeleaf에서 url 를 표시할 경우 @{url} 형태로 사용-->
+<!--   웹디자이너와 협업 시 디자이너가 임시로 입력해 놓은 url과 개발자가 사용할 url을 함께 표기하여 협업이 가능함-->
+
+<!--   모든 URL에 대하여 @{url} 형식으로 사용이 가능함-->
    <img src="/images/dog01.jpg" alt="강아지사진 1">
    <img src="/images/dog02.jpg" alt="강아지사진 2" th:src="@{/images/dog02.jpg}"><br>
 
 <!--   파라미터를 사용할 경우-->
    <a href="/board/boardDetail.do?boardIdx=" th:attrappend="href=${idx}">파라미터 사용하기 1</a>
-
+<!--   thymeleaf를 사용하여 문자열과 변수 출력을 문자열 연결 연산자로 합해서 url를 생성 -->
    <a th:href="@{'/board/boardDetail.do?boardIdx=' + ${idx}}">파라미터 사용하기 2</a>
+<!--   thymeleaf를 사용하여 url에 쿼리스트링을 추가함 -->
    <a th:href="@{/board/boardDetail.do(boardIdx=${idx})}">파라미터 사용하기 3</a>
  </div>
 
