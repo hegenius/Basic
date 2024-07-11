@@ -27,7 +27,7 @@ public class ThymeleafController {
     mv.addObject("value02", 100);
     mv.addObject("value03", 200);
     mv.addObject("utext", "문자열과 <strong>html 태그</strong>가 혼합된 문자열");
-    mv.addObject("idx", 10);
+    mv.addObject("idx", 5);
     return mv;
   }
 
@@ -36,7 +36,6 @@ public class ThymeleafController {
 //    view 파일 설정
     ModelAndView mv = new ModelAndView("thymeleaf/study02");
 
-//    데이터 추가
     MemberDTO member = new MemberDTO();
     member.setMemberIdx(1);
     member.setMemberName("이민석");
@@ -44,14 +43,25 @@ public class ThymeleafController {
     member.setMemberAge(22);
     member.setMemberEmail("lee@gmail.com");
 
+//    데이터 추가
     mv.addObject("member", member);
 
 //    문자열 데이터 추가
     mv.addObject("str1", "첫번째");
     mv.addObject("str2", "두번째");
-//    null 추가
+//    null 값을 추가
     mv.addObject("str3", null);
-//   정수 데이터 추가
+
+
+    return mv;
+  }
+
+
+  @RequestMapping("/thymeleaf/study03")
+  public ModelAndView study03() {
+    ModelAndView mv = new ModelAndView("thymeleaf/study03");
+
+    //   정수 데이터 추가
     mv.addObject("num1", 100);
     mv.addObject("num2", 200);
     mv.addObject("num3", 11);
@@ -68,13 +78,13 @@ public class ThymeleafController {
     strList.add("네번째");
     strList.add("다섯번째");
 
-//    Array 데이터와 List 데이터
+//    Array 데이터와 List 데이터를 추가
     mv.addObject("itemArray", strArray);
     mv.addObject("itemList", strList);
-    
+
     MemberDTO member1 = new MemberDTO();
     member1.setMemberIdx(1);
-    member1.setMemberName("tester");
+    member1.setMemberName("test1");
     member1.setMemberId("테스터1");
     member1.setMemberAge(20);
     member1.setMemberEmail("tester@gmail.com");
@@ -82,35 +92,46 @@ public class ThymeleafController {
 
     MemberDTO member2 = new MemberDTO();
     member2.setMemberIdx(2);
-    member2.setMemberName("tester2");
+    member2.setMemberName("test2");
     member2.setMemberId("테스터2");
     member2.setMemberAge(30);
     member2.setMemberEmail("tester@gmail.com");
 
-
     MemberDTO member3 = new MemberDTO();
-    member3.setMemberIdx(1);
-    member3.setMemberName("tester3");
+    member3.setMemberIdx(3);
+    member3.setMemberName("test3");
     member3.setMemberId("테스터3");
-    member3.setMemberAge(30);
+    member3.setMemberAge(40);
     member3.setMemberEmail("tester@gmail.com");
 
-    MemberDTO member4 = new MemberDTO();
-    member4.setMemberIdx(4);
-    member4.setMemberName("teste4r");
-    member4.setMemberId("테스터4");
-    member4.setMemberAge(40);
-    member4.setMemberEmail("tester@gmail.com");
 
     List<MemberDTO> memberList = new ArrayList<>();
     memberList.add(member1);
     memberList.add(member2);
     memberList.add(member3);
-    
+
 //    MemberDTO 클래스 타입의 객체를 memberList 라는 이름으로 저장
+    mv.addObject("memberList", memberList);
 
     return mv;
   }
 
+  @RequestMapping("/thymeleaf/study04")
+    public ModelAndView study04() {
+    ModelAndView mv = new ModelAndView("thymeleaf/study04");
 
+    // html에 적힌 속성값 조정
+    mv.addObject("checkedVal", true);
+    mv.addObject("multipleVal", true);
+    mv.addObject("selectedVal", true);
+    mv.addObject("disabledVal", false);
+    mv.addObject("readonlyVal", false);
+
+    return mv;
+  }
+
+  @RequestMapping("/thymeleaf/study05")
+  public String study05() {
+    return "/thymeleaf/study05";
+  }
 }
