@@ -1,0 +1,128 @@
+package bitc.fullstack405.xml_json_parser.controller;
+
+import bitc.fullstack405.xml_json_parser.dto.kobis.BoxOfficeResultDTO;
+import bitc.fullstack405.xml_json_parser.dto.kobis.DailyBoxOfficeDTO;
+import bitc.fullstack405.xml_json_parser.dto.pharmacy.FullDataItemDTO;
+import bitc.fullstack405.xml_json_parser.service.ParserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
+
+@Controller
+@RequestMapping("/parser")
+public class ParserController {
+
+  @Autowired
+  private ParserService parserService;
+
+  @Value("${fullstack405.pharmacy.service.key}")
+  private String pharmacyServiceMyKey;
+
+  @Value("${fullstack405.pharmacy.service.fulldata.url}")
+  private String pharmacyServiceFullDataUrl;
+
+
+  @Value("${fullstack405.kobis.service.dailyboxoffice.url}")
+  private String kobisServiceDailyBoxOfficeUrl;
+
+  @Value("${fullstack405.kobis.service.key}")
+  private String kobisServiceMyKey;
+
+
+  @RequestMapping({"", "/"})
+  public String index() {
+    return "index";
+  }
+
+  @RequestMapping("/pharmacy/fullDataFile")
+  public ModelAndView getFullDataFile() throws Exception {
+    ModelAndView mv = new ModelAndView("pharmacy/fullDataList");
+
+    List<FullDataItemDTO> dataList = parserService.getItemListFile("C:/fullstack405/pharmacy.xml");
+    mv.addObject("dataList", dataList);
+
+    return mv;
+  }
+
+
+  @ResponseBody
+  @RequestMapping("/pharmacy/fullDataUrl")
+  public Object getFullDataUrl(@RequestParam("pageNo") String pageNo, @RequestParam("numOfRows") String numOfRows) throws Exception {
+//    1. URL 정보 가져오기
+//    https://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyFullDown?serviceKey=UEjuv2ntM3iZ7GyQBKcLNATSmzQyKtH%2BfDud4ZbqjpJqWmuqfpI4IxS5h4I1v%2BG5l8G7RiC1X0eBQusYgkVUdA%3D%3D&pageNo=1&numOfRows=10
+//    String serviceUrl = "https://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyFullDown";
+    String optKey = "?serviceKey=";
+    String opt1 = "&pageNo=";
+    String opt2 = "&numOfRows=";
+
+//    서비스를 이용하기 위해 필요한 키 입력
+//    String serviceKey = "UEjuv2ntM3iZ7GyQBKcLNATSmzQyKtH%2BfDud4ZbqjpJqWmuqfpI4IxS5h4I1v%2BG5l8G7RiC1X0eBQusYgkVUdA%3D%3D";
+//    추가 옵션 값 입력
+//    String pageNo = "1";
+//    String numOfRows = "10";
+
+//    2. 서비스에 URL 정보 전달
+//    ParserService 에서 제공하는 getItemListUrl 메소드를 사용하여 정보를 가져옴
+//    매개변수로 서비스 URL 전체를 생성하여 전달함
+    List<FullDataItemDTO> itemList = parserService.getItemListUrl(pharmacyServiceFullDataUrl + optKey + pharmacyServiceMyKey + opt1 + pageNo + opt2 + numOfRows);
+//    3. 파싱된 데이터를 클라이언트에 전달
+
+    return itemList;
+  }
+
+  @RequestMapping("/kobis/dailyBoxOffice")
+  public String dailyBoxOfficeView() throws Exception {
+    return "kobis/dailyBoxOffice";
+  }
+
+  @ResponseBody
+  @RequestMapping("/kobis/dailyBoxOfficeJson")
+  public Object getDailyBoxOfficeJson(@RequestParam("targetDt") String targetDt) throws Exception {
+//    1. 서비스 url 생성
+    String optKey = "?key=";
+    String opt1 = "&targetDt=";
+//    서비스 URL 완성
+    String serviceUrl = kobisServiceDailyBoxOfficeUrl + optKey + kobisServiceMyKey + opt1 + targetDt;
+
+//    https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json
+//    key=f5eef3421c602c6cb7ea224104795888
+//    targetDt=20240716
+//    2. 옵션 추가
+//    3. 서비스를 사용하여 정보 가져오기
+//  2. 서비스
+    List<BoxOfficeResultDTO> dailyBoxOfficeList = parserService.getDayilyBoxOfficeList(serviceUrl);
+
+//    4. ajax 통신으로 클라이언트에 데이터 전달
+    return dailyBoxOfficeList;
+
+  }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
