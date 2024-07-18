@@ -3,7 +3,6 @@ package bitc.fullstack405.board3.controller;
 import bitc.fullstack405.board3.dto.BoardDTO;
 import bitc.fullstack405.board3.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -65,6 +64,4 @@ public class BoardApiController {
   public void deleteBoard(@PathVariable("boardIdx") int boardIdx) throws Exception {
     boardService.deleteBoard(boardIdx);
   }
-
-
 }
