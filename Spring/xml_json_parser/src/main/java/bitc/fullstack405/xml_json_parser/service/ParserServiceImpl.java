@@ -1,6 +1,7 @@
 package bitc.fullstack405.xml_json_parser.service;
 
 import bitc.fullstack405.xml_json_parser.dto.kobis.BoxOfficeResultDTO;
+import bitc.fullstack405.xml_json_parser.dto.kobis.DailyBoxOfficeDTO;
 import bitc.fullstack405.xml_json_parser.dto.kobis.KobisDailyBoxOfficeDTO;
 import bitc.fullstack405.xml_json_parser.dto.pharmacy.*;
 import com.google.gson.Gson;
@@ -35,20 +36,25 @@ public class ParserServiceImpl implements ParserService {
     Unmarshaller um = jc.createUnmarshaller();
 
 //    기존에 제공된 xml 데이터를 기반으로 FullDataResponseDTO 클래스의 객체를 생성하므로 xml 데이터를 파싱하여 가져온 데이터를 FullDataResponseDTO 클래스 타입의 객체에 타입 변환하여 저장함
-//    unmarshal() : 언마샬을 수행하는 메소드, 매개변수로 파일아니 URL을 받음
+//    unmarshal() : 언마샬을 수행하는 메소드, 매개변수로 파일이나 URL을 받음
 
     FullDataResponseDTO fullData = (FullDataResponseDTO) um.unmarshal(new File(fileName));
     FullDataHeaderDTO header = fullData.getHeader();
     FullDataBodyDTO body = fullData.getBody();
     FullDataItemsDTO items = body.getItems();
     List<FullDataItemDTO> itemList = items.getItemList();
+
     return itemList;
   }
 
+//  매개변수로 서비스 URL을 받아옴
   @Override
   public List<FullDataItemDTO> getItemListUrl(String serviceUrl) throws Exception {
+//    결과가 저장될 LIST
     List<FullDataItemDTO> itemList = new ArrayList<>();
+//    서비스 URL을 저장할 객체
     URL url = null;
+//    HttpURLConnection : 자바에서 웹 브라우저 없이 Http 서비스에 접속하기 위한 클래스
     HttpURLConnection urlConn = null;
 
     try {
@@ -80,19 +86,18 @@ public class ParserServiceImpl implements ParserService {
 
     }
     finally {
-//      네트워크 연결은 외부 리소스를 활용하는 것 이므로
+//      네트워크 연결은 외부 리소스를 사용하는 것이므로 사용 후 반드시 리소스를 해제해야 함
       if (urlConn != null) {
         urlConn.disconnect();
-
       }
     }
     return itemList;
   }
 
   @Override
-  public List<BoxOfficeResultDTO> getDayilyBoxOfficeList(String serviceUrl) throws Exception {
+  public List<DailyBoxOfficeDTO> getDayilyBoxOfficeList(String serviceUrl) throws Exception {
 //    최종 출력 결과를 저장할 변수
-    List<BoxOfficeResultDTO> dailyBoxOfficeList = new ArrayList<>();
+    List<DailyBoxOfficeDTO> dayilyBoxOfficeList = new ArrayList<>();
 //    서비스 URL 을 저장할 객체
     URL url = null;
 //    자바로 HTTP 서비스를 이용하기 위한 클래스
@@ -125,8 +130,7 @@ public class ParserServiceImpl implements ParserService {
       Gson gson = new Gson();
 //      fromJson() : json 문자열을 자바 클래스 타입으로 변환
       KobisDailyBoxOfficeDTO boxOffice = gson.fromJson(sb.toString(), KobisDailyBoxOfficeDTO.class);
-      dailyBoxOfficeList = boxOffice.getBoxOfficeResult().getDailyBoxOfficeList();
-
+      dayilyBoxOfficeList  = boxOffice.getBoxOfficeResult().getDailyBoxOfficeList();
     }
     catch (Exception e) {
       e.printStackTrace();
@@ -136,7 +140,7 @@ public class ParserServiceImpl implements ParserService {
       if (urlConn != null) {urlConn.disconnect();}
     }
 
-    return dailyBoxOfficeList;
+    return dayilyBoxOfficeList;
   }
 }
 

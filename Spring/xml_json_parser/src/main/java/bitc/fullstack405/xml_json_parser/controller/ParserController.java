@@ -21,6 +21,7 @@ public class ParserController {
   @Autowired
   private ParserService parserService;
 
+  //  application.properties 파일에 설정된 내용 가져오기
   @Value("${fullstack405.pharmacy.service.key}")
   private String pharmacyServiceMyKey;
 
@@ -70,35 +71,33 @@ public class ParserController {
 //    2. 서비스에 URL 정보 전달
 //    ParserService 에서 제공하는 getItemListUrl 메소드를 사용하여 정보를 가져옴
 //    매개변수로 서비스 URL 전체를 생성하여 전달함
+    //    List<FullDataItemDTO> itemList = parserService.getItemListUrl(serviceUrl + optKey + serviceKey + opt1 + pageNo + opt2 + numOfRows);
     List<FullDataItemDTO> itemList = parserService.getItemListUrl(pharmacyServiceFullDataUrl + optKey + pharmacyServiceMyKey + opt1 + pageNo + opt2 + numOfRows);
-//    3. 파싱된 데이터를 클라이언트에 전달
 
+    //    3. 파싱된 데이터를 클라이언트에 전달
     return itemList;
   }
 
+//  view 페이지
   @RequestMapping("/kobis/dailyBoxOffice")
   public String dailyBoxOfficeView() throws Exception {
     return "kobis/dailyBoxOffice";
   }
 
+//  ajax 통신 부분
   @ResponseBody
-  @RequestMapping("/kobis/dailyBoxOfficeJson")
+  @RequestMapping("/kobis/daliyBoxOfficeJson")
   public Object getDailyBoxOfficeJson(@RequestParam("targetDt") String targetDt) throws Exception {
-//    1. 서비스 url 생성
+//     1. 서비스 url 생성 (옵션 추가)
     String optKey = "?key=";
     String opt1 = "&targetDt=";
 //    서비스 URL 완성
     String serviceUrl = kobisServiceDailyBoxOfficeUrl + optKey + kobisServiceMyKey + opt1 + targetDt;
 
-//    https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json
-//    key=f5eef3421c602c6cb7ea224104795888
-//    targetDt=20240716
-//    2. 옵션 추가
-//    3. 서비스를 사용하여 정보 가져오기
-//  2. 서비스
-    List<BoxOfficeResultDTO> dailyBoxOfficeList = parserService.getDayilyBoxOfficeList(serviceUrl);
+//    2. 서비스를 사용하여 정보 가져오기
+    List<DailyBoxOfficeDTO> dailyBoxOfficeList = parserService.getDayilyBoxOfficeList(serviceUrl);
 
-//    4. ajax 통신으로 클라이언트에 데이터 전달
+//    3. ajax 통신으로 클라이언트에 데이터 전달
     return dailyBoxOfficeList;
 
   }
