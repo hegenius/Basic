@@ -6,14 +6,14 @@
 
 <mapper namespace="bitc.fullstack405.board3.mapper.BoardPagingMapper">
 
-    <select id="selectBoardPageList" resultType="bitc.fullstack405.board3.dto.BoardDTO">
-      SELECT
-        board_idx, title, create_user, create_date, hit_cnt
-      FROM
-        t_board
-      WHERE
-        deleted_yn = 'N'
-      ORDER
-        BY board_idx DESC
-    </select>
+  <select id="selectBoardPageList" resultType="bitc.fullstack405.board3.dto.BoardDTO">
+    SELECT
+      board_idx, title, create_user, create_date, hit_cnt
+    FROM
+      t_board
+    WHERE
+      deleted_yn = 'N'
+    ORDER
+      BY board_idx DESC
+  </select>
 </mapper>
