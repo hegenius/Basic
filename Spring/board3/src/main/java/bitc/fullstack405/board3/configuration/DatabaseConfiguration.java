@@ -20,11 +20,11 @@ import javax.sql.DataSource;
 @PropertySource("classpath:/application.properties")
 public class DatabaseConfiguration {
 
-  //  @Autowired : 스프링 프레임워크가 해당 객체를 생성 및 관리하도록 하는 어노테이션
+//  @Autowired : 스프링 프레임워크가 해당 객체를 생성 및 관리하도록 하는 어노테이션
   @Autowired
   private ApplicationContext applicationContext;
 
-  //  @Bean : 자바 빈즈를 의미하는 어노테이션, 사용자가 직접 생성한 클래스의 자바 빈즈가 아닌 라이브러리로 제공되는 클래스의 자바 빈즈를 의미함
+//  @Bean : 자바 빈즈를 의미하는 어노테이션, 사용자가 직접 생성한 클래스의 자바 빈즈가 아닌 라이브러리로 제공되는 클래스의 자바 빈즈를 의미함
   @Bean
 //  @ConfigurationProperties : 설정 파일 안에서 특정 설정 내용을 가져오는 어노테이션
 //  prefix : 접두사, 시작 단어 설정
@@ -44,7 +44,7 @@ public class DatabaseConfiguration {
     return dataSource;
   }
 
-  //  실제 데이터 베이스 연결 및 사용 정보
+//  실제 데이터 베이스 연결 및 사용 정보
   @Bean
   public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
     SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
@@ -66,7 +66,7 @@ public class DatabaseConfiguration {
     return new SqlSessionTemplate(sqlSessionFactory);
   }
 
-  //  마이바티스 설정
+//  마이바티스 설정
   @Bean
   @ConfigurationProperties(prefix = "mybatis.configuration")
   public org.apache.ibatis.session.Configuration mybatisConfig() {
