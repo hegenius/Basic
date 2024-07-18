@@ -24,12 +24,12 @@ public class BoardController {
 //  전체 URL 설정 방법
 //  서버 URL:포트번호/기본주소/추가주소/게시물번호
 
-//  게시판 목록 : /board3/selectBoardList.do -> /board3    GET
-//  게시글 작성 화면(view) : /board3/writeBoard.do -> /board3/write    GET
-//  게시글 작성 처리 : /board3/insertBoard.do -> /board3/write    POST
-//  게시글 상세 화면 : /board3/selectBoardDetail.do ->/board3/게시글번호    GET
-//  게시글 수정 : /board3/updateBoard.do -> /board3/게시글번호    PUT
-//  게시글 삭제 : /board3/deleteBoard.do -> /board3/게시글번호    DELETE
+//  게시판 목록 : /board3/selectBoardList.do -> /board3 : GET
+//  게시글 작성 화면(view) : /board3/writeBoard.do -> /board3/write : GET
+//  게시글 작성 처리 : /board3/insertBoard.do -> /board3/write : POST
+//  게시글 상세 화면 : /board3/selectBoardDetail.do ->/board3/게시글번호 : GET
+//  게시글 수정 : /board3/updateBoard.do -> /board3/게시글번호 : PUT
+//  게시글 삭제 : /board3/deleteBoard.do -> /board3/게시글번호 : DELETE
 
 //  @RequestMapping 어노테이션 사용 시 URI를 value 속성을 사용하여 설정, method 속성을 추가하여 GET, POST, PUT, DELETE 를 사용하여 설정
 //  @GetMapping, @PostMapping, @PutMapping, @DeleteMapping 어노테이션을 사용하여 구분해도 상관없음
