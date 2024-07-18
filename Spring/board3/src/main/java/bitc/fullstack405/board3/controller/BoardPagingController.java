@@ -6,11 +6,13 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
-@Controller("/board3")
+@Controller
+@RequestMapping("/board3")
 public class BoardPagingController {
 
   @Autowired
@@ -38,7 +40,6 @@ public class BoardPagingController {
 //  navigateLastPage : 네비게이션 블록의 마지막 페이지 번호
 
 
-
 //  @RequestParam의 추가 옵션 중 required=false 를 사용 시 지정된 값이 입력되지 않아도 오류가 발생하지 않음 (기본값 true)
 //  defaultValue : 지정한 파라미터 값이 없을 경우 default로 지정한 값을 대신 사용
   @GetMapping("/page/board")
@@ -49,7 +50,7 @@ public class BoardPagingController {
 //    첫번째 매개변수 : 서비스를 사용하여 DB에서 데이터를 가져오는 메소드를 입력
 //    두번째 매개변수 : 한 페이지에서 출력할 페이지 이동 버튼 수 설정
 
-    PageInfo<BoardDTO> boardPageList = new PageInfo<>(boardPagingService.selectBoardPageList(pageNum), 5);
+    PageInfo<BoardDTO> boardPageList = new PageInfo<>(boardPagingService.selectBoardPageList(pageNum), 5); // 리스트 버튼 갯수
     mv.addObject("boardPageList", boardPageList);
 
     return mv;
