@@ -8,6 +8,6 @@ import java.util.List;
 public class BoxOfficeResultDTO {
   private String boxofficeType;
   private String showRange;
-  private List<BoxOfficeResultDTO> dailyBoxOfficeList;
+  private List<DailyBoxOfficeDTO> dailyBoxOfficeList;
 
 }
