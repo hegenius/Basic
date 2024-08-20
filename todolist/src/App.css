@@ -1,0 +1,21 @@
+
+.innerWrap {width:800px; margin: 0 auto;}
+
+.form-control {padding: 1rem !important; border:2px solid #444;}
+
+.todo-item {
+  width: 100%;
+  padding:15px 0;
+  margin-top: 20px;
+  border-bottom: 2px solid #ddd;
+}
+ .material-symbols-outlined {
+     margin-right: 7px;
+   font-variation-settings:
+           'FILL' 0,
+           'wght' 400,
+           'GRAD' 0,
+           'opsz' 24
+
+ }
+
