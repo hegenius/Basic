@@ -16,6 +16,7 @@ function Child3(props) {
     // 자식 컴포넌트의 데이터를 부모컴포넌트로 전달할 수 있음
     props.setData2(2000);
   }
+
   return(
     <div className={'border border-2 border-info p-3'}>
       <h3>자식 컴포넌트</h3>

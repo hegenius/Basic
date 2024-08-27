@@ -42,7 +42,6 @@ function JoinForm(props) {
     setUserName('');
   }
 
-
   return (
     <form onSubmit={submitClick}>
       <div className={'mt-3'}>
