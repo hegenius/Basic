@@ -30,3 +30,4 @@ public class BoardApiController {
     return boardList;
   }
 }
+

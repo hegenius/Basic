@@ -9,3 +9,4 @@ import java.util.List;
 public interface BoardApiMapper {
   List<BoardDTO> selectBoardList() throws Exception;
 }
+

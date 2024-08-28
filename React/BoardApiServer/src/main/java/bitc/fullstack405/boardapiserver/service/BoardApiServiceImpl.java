@@ -18,3 +18,4 @@ public class BoardApiServiceImpl implements BoardApiService {
     return boardApiMapper.selectBoardList();
   }
 }
+

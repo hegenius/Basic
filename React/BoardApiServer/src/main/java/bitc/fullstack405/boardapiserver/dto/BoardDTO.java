@@ -13,3 +13,4 @@ public class BoardDTO {
   private String updateDate;
   private int hitCnt;
 }
+
